@@ -51,7 +51,7 @@ class ListeSimpleTest {
         listeATester.ajout(2);
         listeATester.ajout(3);
         assertEquals(3, listeATester.getSize());
-        assertNotEquals(listeATester.toString(), affichage_1);
+        assertNotEquals(listeATester.toString(), affichage1);
         System.out.println(listeATester);
     }
 
