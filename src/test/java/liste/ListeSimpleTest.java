@@ -45,7 +45,7 @@ class ListeSimpleTest {
 
     @Test
     void toStringDonneTousLesNoeuds() {
-        String affichage_1 = listeATester.toString()
+        String affichage_1 = listeATester.toString();
         System.out.println(listeATester);
         listeATester.ajout(1);
         listeATester.ajout(2);
@@ -226,7 +226,7 @@ class ListeSimpleTest {
         listeATester.ajout(1);
         assertEquals("ListeSimple(Noeud(1), Noeud(2), Noeud(3), Noeud(4), Noeud(5))", listeATester.toString());
         listeATester.echanger(r1, r2);
-        assertEquals("ListeSimple(Noeud(1), Noeud(4), Noeud(3), Noeud(2), Noeud(5))"listeATester.toString());
+        assertEquals("ListeSimple(Noeud(1), Noeud(4), Noeud(3), Noeud(2), Noeud(5))", listeATester.toString());
     }
 
     @Test
