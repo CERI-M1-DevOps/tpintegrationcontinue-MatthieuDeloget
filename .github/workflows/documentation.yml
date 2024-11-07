@@ -1,0 +1,26 @@
+name: Document this, nerd!
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  Document this nerd:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: generate doc with Maven
+        run: mvn -B javadoc::javadoc
+      - name: deploy javadoc
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
