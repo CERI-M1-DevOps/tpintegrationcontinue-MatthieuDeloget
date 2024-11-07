@@ -20,7 +20,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/**/pom.xml') }}
           restore-keys: | # In case my key's lost, I got my own back
             ${{ runner.os }}-build-${{ env.cache-name }}-
-       - name: fetch SonarQube packages
+      - name: fetch SonarQube packages
         uses: actions/cache@v4
         with:
           path: ~/.sonar/cache
