@@ -2,25 +2,30 @@ name: Document this, nerd!
 
 on:
   pull_request:
-    types:
-      - closed
+    types: [closed]
+permissions:
+  contents: write
 
 jobs:
   document-this-nerd:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - name: checkout
         uses: actions/checkout@v4
+
+      - name: set up Java21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'corretto'
+
       - name: generate doc with Maven
         run: mvn -B javadoc::javadoc
+
       - name: deploy javadoc
         uses: peaceiris/actions-gh-pages@v4
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./target/reports/apidocs
