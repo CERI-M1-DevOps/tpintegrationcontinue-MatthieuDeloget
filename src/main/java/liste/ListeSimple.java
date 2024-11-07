@@ -13,6 +13,11 @@ public class ListeSimple {
         size++;
     }
 
+    /**
+     * Modifie la première instance de l'élément recherché dans la liste en une nouvelle valeur
+     * @param element L'élément recherché dans la liste
+     * @param nouvelleValeur La valeur que prendra l'élément remplacé
+     */
     public void modifiePremier(Object element, Object nouvelleValeur) {
         Noeud courant = tete;
         while (courant != null && courant.getElement() != element)
