@@ -21,7 +21,7 @@ jobs:
         env:
           cache-name: cache-maven-dependancies
         with:
-          path: ~/.npm
+          path: ~/.m2/repository
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/**/pom.xml') }}
           restore-keys: | # In case my key's lost, I got my own back
             ${{ runner.os }}-build-${{ env.cache-name }}-
